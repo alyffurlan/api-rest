@@ -1,3 +1,3 @@
 # API REST
 
-alof fulano + igor tunner + augusto (vaga remanescente)
+alof fulano + igor tunnador de marea turbo + augusto (só fica vagabundeando)
