@@ -1,5 +1,5 @@
 <?php
-require_once("config.php");
+require_once("env.php");
 
 class Database {
     private $host     = DB-HOST;
@@ -26,11 +26,13 @@ class Database {
             $this->connection->setAttribute(PDO::ATTR_DEFAULT_FETCH_MODE, PDO::FETCH_ASSOC);
 
         } catch (PDOException $exception) {
-            // echo "Erro de conexão: ".$exception->getMessage();
+            echo "Erro de conexão: ".$exception->getMessage();
         }
 
         return $this->connection;
     }
+
+    // TODO: adicionar parte do código que faz com que quando é tratado como string retorna os valores
 }
 
 ?>

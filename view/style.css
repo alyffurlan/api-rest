@@ -180,6 +180,7 @@
     align-items: center;
     min-height: calc(100vh - 90px);
     padding: 2rem;
+    gap: 2rem;
   }
   
   /* ── CORNER DECORATIONS ─────────────────── */
@@ -313,7 +314,7 @@
   .method-badge.POST { background: rgba(123,47,255,0.15); border-color: var(--purple); color: var(--purple); }
   .method-badge.PUT  { background: rgba(255,183,3,0.12);  border-color: var(--amber);  color: var(--amber);  }
   .method-badge.DELETE { background: rgba(255,60,90,0.12); border-color: var(--red);  color: var(--red);    }
-  
+  .control-group:has(.GET) ~ .request-body { display: none; }
   /* ── INPUTS ─────────────────────────────── */
   .space-input {
     width: 100%;
