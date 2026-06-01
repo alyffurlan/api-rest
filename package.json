@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "build": "echo 'no build required.'",
-    "start": "node --env-file=config/.env controller/index.mjs"
+    "start": "node --env-file=/etc/secrets/.env controller/index.mjs" /* for Render deployment */
   },
   "author": "",
   "license": "ISC",
