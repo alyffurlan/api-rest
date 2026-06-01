@@ -50,10 +50,10 @@ export default class Database {
         const [row] = await this.#conn`
             UPDATE locations
             SET
-                name      = COALESCE(${name}      ?? null, name),
-                country   = COALESCE(${country}   ?? null, country),
-                latitude  = COALESCE(${latitude}  ?? null, latitude),
-                longitude = COALESCE(${longitude} ?? null, longitude)
+                name      = ${name},
+                country   = ${country},
+                latitude  = ${latitude},
+                longitude = ${longitude}
             WHERE location_id = ${locationId}
             RETURNING *
         `;
