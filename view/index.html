@@ -1,22 +1,17 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="style.css">
     <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;600;700;900&family=Share+Tech+Mono&display=swap" rel="stylesheet">
-    <title>NASA API — Mission Control</title>
+    <title>NASA API — Controle de Missão</title>
 </head>
 <body>
-  <!-- Starfield canvas -->
   <canvas id="stars"></canvas>
-
-  <!-- Nebula glow blobs -->
   <div class="nebula nebula-1"></div>
   <div class="nebula nebula-2"></div>
   <div class="nebula nebula-3"></div>
-
-  <!-- Scanline overlay -->
   <div class="scanlines"></div>
 
   <header class="hud-header">
@@ -31,39 +26,48 @@
         </svg>
       </div>
       <div class="header-text">
-        <span class="mission-tag">MISSION CONTROL</span>
+        <span class="mission-tag">CONTROLE DE MISSÃO</span>
         <h1 class="site-title">NASA API</h1>
-        <span class="subtitle">DEEP SPACE INTERFACE v4.2.1</span>
+        <span class="subtitle">INTERFACE ESPACIAL PROFUNDA v4.2.1</span>
       </div>
       <div class="status-indicators">
-        <div class="indicator active"><span class="dot"></span>SYSTEM ONLINE</div>
-        <div class="indicator"><span class="dot warn"></span>LINK ESTABLISHED</div>
+        <div class="indicator active"><span class="dot"></span>SISTEMA ONLINE</div>
+        <div class="indicator"><span class="dot warn"></span>LINK ESTABELECIDO</div>
       </div>
     </div>
     <div class="hud-line"></div>
   </header>
 
   <section id="main-sect">
-    <!-- Decorative grid lines -->
     <div class="grid-corner top-left"></div>
     <div class="grid-corner top-right"></div>
     <div class="grid-corner bottom-left"></div>
     <div class="grid-corner bottom-right"></div>
 
+    <!-- REQUEST PANEL -->
     <div class="panel">
       <div class="panel-header">
-        <span class="panel-label">REQUEST CONFIGURATION</span>
-        <div class="panel-dots">
-          <span></span><span></span><span></span>
+        <span class="panel-label">CONFIGURAÇÃO DA REQUISIÇÃO</span>
+        <div class="panel-dots"><span></span><span></span><span></span></div>
+      </div>
+
+      <!-- Seletor de recurso -->
+      <div class="control-group">
+        <label class="control-label">
+          <svg width="12" height="12" viewBox="0 0 12 12" fill="currentColor"><polygon points="6,0 12,12 0,12"/></svg>
+          RECURSO
+        </label>
+        <div class="resource-toggle">
+          <button class="resource-btn active" data-resource="locations" id="btn-locations">LOCAIS</button>
+          <button class="resource-btn" data-resource="impacts" id="btn-impacts">IMPACTOS</button>
         </div>
       </div>
 
+      <!-- Método HTTP -->
       <div class="control-group">
         <label class="control-label" for="http_method_select">
-          <svg width="12" height="12" viewBox="0 0 12 12" fill="currentColor">
-            <polygon points="6,0 12,12 0,12"/>
-          </svg>
-          HTTP METHOD
+          <svg width="12" height="12" viewBox="0 0 12 12" fill="currentColor"><polygon points="6,0 12,12 0,12"/></svg>
+          MÉTODO HTTP
         </label>
         <div class="select-wrapper">
           <select name="http-method-select" id="http_method_select">
@@ -77,25 +81,17 @@
         <div class="method-badge GET" id="method-badge">GET</div>
       </div>
 
+      <!-- Endpoint (somente leitura, gerado automaticamente) -->
       <div class="control-group">
-        <label class="control-label" for="endpoint-input">
-          <svg width="12" height="12" viewBox="0 0 12 12" fill="currentColor">
-            <polygon points="6,0 12,12 0,12"/>
-          </svg>
+        <label class="control-label">
+          <svg width="12" height="12" viewBox="0 0 12 12" fill="currentColor"><polygon points="6,0 12,12 0,12"/></svg>
           ENDPOINT
         </label>
-        <input style="opacity: 0.5;" type="text" id="endpoint-input" class="space-input" placeholder="/api/" value="http://localhost:68/api" disabled/>
+        <input type="text" id="endpoint-input" class="space-input" readonly/>
       </div>
 
-      <div class="control-group request-body">
-        <label class="control-label" for="body-input">
-          <svg width="12" height="12" viewBox="0 0 12 12" fill="currentColor">
-            <polygon points="6,0 12,12 0,12"/>
-          </svg>
-          REQUEST BODY
-        </label>
-        <textarea id="body-input" class="space-input space-textarea" placeholder='{"date": "2026-05-31"}'></textarea>
-      </div>
+      <!-- Campos dinâmicos -->
+      <div id="dynamic-fields"></div>
 
       <button class="launch-btn" id="launch-btn">
         <span class="btn-glow"></span>
@@ -104,7 +100,7 @@
           <path d="M5 10c0 5.523 3.134 10.343 7 12.343C15.866 20.343 19 15.523 19 10V8H5v2z"/>
           <circle cx="12" cy="13" r="2"/>
         </svg>
-        LAUNCH REQUEST
+        ENVIAR REQUISIÇÃO
       </button>
 
       <div class="panel-footer">
@@ -113,31 +109,28 @@
       </div>
     </div>
 
+    <!-- PAINEL DE RESPOSTA -->
     <div class="panel">
       <div class="panel-header">
-        <span class="panel-label">RESPONSE</span>
-        <div class="panel-dots">
-          <span></span><span></span><span></span>
-        </div>
+        <span class="panel-label">RESPOSTA</span>
+        <div class="panel-dots"><span></span><span></span><span></span></div>
       </div>
       <br>
-
       <div class="response-panel" id="response-panel">
         <div class="response-header">
-          <span class="response-label">TELEMETRY RESPONSE</span>
+          <span class="response-label">RESPOSTA DE TELEMETRIA</span>
           <span class="response-status" id="response-status"></span>
         </div>
-        <pre id="response-output" class="response-output">// Awaiting signal from deep space...</pre>
+        <pre id="response-output" class="response-output">// Aguardando sinal do espaço profundo...</pre>
       </div>
-
       <div class="panel-footer">
-        <span>T+<span id="mission-clock">00:00:00</span></span>
+        <span>T+<span id="mission-clock-2">00:00:00</span></span>
         <span>LAT 28.5°N · LON 80.6°W</span>
       </div>
     </div>
   </section>
 
   <script src="js/styler.js"></script>
-  <script src="../model/endpointManager.js" defer></script>
+  <script src="../model/endpointManager.js"></script>
 </body>
 </html>
