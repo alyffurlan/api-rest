@@ -56,22 +56,9 @@ DB_NAME=nome_do_banco
 
 ---
 
-### 3. Inicializar o servidor local
+### 3. Abrir o front-end
 
-Com o arquivo `.env` configurado, dê um duplo clique no arquivo `run.bat` na raiz do projeto.
-
-```
-api-rest/
-└── run.bat   ← duplo clique aqui
-```
-
-O script irá checar por dependências automaticamente (caso ainda não estejam instaladas) e iniciar o servidor Node.js. Aguarde até que a mensagem de servidor rodando apareça no terminal.
-
----
-
-### 4. Abrir o front-end
-
-Após o servidor estar ativo, abra o arquivo `index.html` localizado na pasta `view/` diretamente no navegador:
+Abra o arquivo `index.html` localizado na pasta `view/` diretamente no navegador:
 
 ```
 api-rest/
