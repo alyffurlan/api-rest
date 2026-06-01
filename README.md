@@ -88,7 +88,7 @@ api-rest/
 ```
 
 O script irá checar por dependências automaticamente (caso ainda não estejam instaladas) e iniciar o servidor Node.js. Aguarde até que a mensagem de servidor rodando apareça no terminal.
-Ao abrir o arquivo `index.html`, modifique o valor do endpoint. Antes de fazer uma requisição, troque `https://api-rest-pr24.onrender.com` por `http://localhost:80` no campo escrito "ENDPOINT".
+Ao abrir o arquivo `index.html`, modifique o valor do endpoint. Antes de fazer uma requisição, troque `https://api-rest-pr24.onrender.com` por `http://localhost:68` no campo escrito "ENDPOINT".
 
 ---
 
