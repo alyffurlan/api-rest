@@ -117,12 +117,12 @@ export default class Database {
         const [row] = await this.#conn`
             UPDATE impacts
             SET
-                location_id    = COALESCE(${locationId}    ?? null, location_id),
-                name           = COALESCE(${name}          ?? null, name),
-                year           = COALESCE(${year}          ?? null, year),
-                mass_kg        = COALESCE(${massKg}        ?? null, mass_kg),
-                classification = COALESCE(${classification}?? null, classification),
-                was_observed   = COALESCE(${wasObserved}   ?? null, was_observed)
+                location_id    = COALESCE(${locationId    ?? null}, location_id),
+                name           = COALESCE(${name          ?? null}, name),
+                year           = COALESCE(${year          ?? null}, year),
+                mass_kg        = COALESCE(${massKg        ?? null}, mass_kg),
+                classification = COALESCE(${classification ?? null}, classification),
+                was_observed   = COALESCE(${wasObserved   ?? null}, was_observed)
             WHERE impact_id = ${impactId}
             RETURNING *
         `;
