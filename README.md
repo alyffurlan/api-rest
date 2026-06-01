@@ -11,11 +11,19 @@ Antes de começar, certifique-se de ter instalado em sua máquina:
 
 | Dependência | Versão recomendada | Guia de instalação |
 |---|---|---|
-| **Node.js** | v18 ou superior | [nodejs.org/en/download](https://nodejs.org/en/download) |
-| **npm** | Incluído com o Node.js | [docs.npmjs.com/downloading-and-installing-node-js-and-npm](https://docs.npmjs.com/downloading-and-installing-node-js-and-npm) |
 | **Git** | Qualquer versão recente | [git-scm.com/downloads](https://git-scm.com/downloads) |
 
 > **Windows obrigatório** para uso do `run.bat`.
+> 
+### Dependências opcionais
+
+Instale apenas se o servidor não estiver respondendo. Necessário para rodar o servidor localmente.
+
+| Dependência | Versão recomendada | Guia de instalação |
+|---|---|---|
+| **Node.js** | v18 ou superior | [nodejs.org/en/download](https://nodejs.org/en/download) |
+| **npm** | Incluído com o Node.js | [docs.npmjs.com/downloading-and-installing-node-js-and-npm](https://docs.npmjs.com/downloading-and-installing-node-js-and-npm) |
+
 
 ---
 
@@ -67,6 +75,20 @@ api-rest/
 ```
 
 Você pode abrir dando duplo clique no arquivo ou arrastando-o para o navegador.
+
+---
+
+## Solução de problemas
+Caso o servidor não responder às requisições HTTP, você precisará inicializar o próprio servidor. Para fazer isso, primeiro instale as dependências opcionais necessárias.
+Com o arquivo `.env` configurado, dê um duplo clique no arquivo `run.bat` na raiz do projeto.
+
+```
+api-rest/
+└── run.bat   ← duplo clique aqui
+```
+
+O script irá checar por dependências automaticamente (caso ainda não estejam instaladas) e iniciar o servidor Node.js. Aguarde até que a mensagem de servidor rodando apareça no terminal.
+Ao abrir o arquivo `index.html`, modifique o valor do endpoint. Antes de fazer uma requisição, troque `https://api-rest-pr24.onrender.com` por `http://localhost:80` no campo escrito "ENDPOINT".
 
 ---
 
