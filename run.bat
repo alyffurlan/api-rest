@@ -16,7 +16,7 @@ if %ERRORLEVEL% neq 0 (
 )
 
 REM Run the application from the project root
-node --env-file=config\.env controller\index.mjs
+node --env-file=config/.env controller/index.mjs
 
 REM Keep window open if launched by double-click
 if %ERRORLEVEL% neq 0 (
