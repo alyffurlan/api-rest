@@ -84,7 +84,7 @@
           </svg>
           ENDPOINT
         </label>
-        <input style="opacity: 0.5;" type="text" id="endpoint-input" class="space-input" placeholder="/api/v1/apod" value="/api/v1/apod" disabled/>
+        <input style="opacity: 0.5;" type="text" id="endpoint-input" class="space-input" placeholder="/api/" value="http://localhost:68/api" disabled/>
       </div>
 
       <div class="control-group request-body">
@@ -94,7 +94,7 @@
           </svg>
           REQUEST BODY
         </label>
-        <textarea id="body-input" class="space-input space-textarea" placeholder='{"date": "2024-01-01"}'></textarea>
+        <textarea id="body-input" class="space-input space-textarea" placeholder='{"date": "2026-05-31"}'></textarea>
       </div>
 
       <button class="launch-btn" id="launch-btn">
@@ -138,6 +138,6 @@
   </section>
 
   <script src="js/styler.js"></script>
-  <script src="js/endpointManager.js"></script>
+  <script src="../model/endpointManager.js" defer></script>
 </body>
 </html>
