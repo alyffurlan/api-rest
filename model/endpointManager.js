@@ -1,5 +1,5 @@
 (() => {
-  const BASE = 'https://api-rest-pr24.onrender.com/api/';
+  const BASE = 'https://api-rest-pr24.onrender.com/api';
 
   // ── State ──────────────────────────────────────────────────────────
   let resource = 'locations'; // 'locations' | 'impacts'
