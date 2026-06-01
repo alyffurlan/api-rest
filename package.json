@@ -4,7 +4,8 @@
   "description": "trabalho acadêmico em grupo. API REST",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "build": "echo 'no build required.'",
+    "start": "node --env-file=config\.env controller\index.mjs"
   },
   "author": "",
   "license": "ISC",
